@@ -3,6 +3,7 @@
 	<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="msvalidate.01" content="406799D64711F5C19B48CD297396FE17" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title> Metroacero</title>
 		<?php wp_head(); ?>
