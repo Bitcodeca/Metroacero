@@ -13,7 +13,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4 margin25"><h4><i class="fa fa-envelope fa-lg"></i> Email:</h4></div>
-						<div class="col-md-8 margin25">Ventas@metroacero.com<br> Compras@metroacero.com <br> <b>Gerencia General</b> Jpadilla@metroacero.com</div>
+						<div class="col-md-8 margin25">Ventas@metroacero.com<br> <b>Gerencia General</b> Jpadilla@metroacero.com</div>
 					</div>
 				</div>
 				<div class="col-md-6">

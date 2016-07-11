@@ -51,7 +51,7 @@
 											</a>
 										</div>
 
-									<?php } if($num==4){ echo '</div>';}  if($num==4){ echo '<div class="row">';}
+									<?php } if($num==4 || $num==3){ echo '</div>';}  if($num==4){ echo '<div class="row">';}
 									 if($num>=4){?>
 										<div class="col-md-<?php echo $casilla4; ?> col-xs-<?php echo $casilla4; ?> imgpagnoticias">
 											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[3]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
@@ -105,7 +105,7 @@
 											</a>
 										</div>
 
-									<?php } if($num==4){ echo '</div>';}  if($num==4){ echo '<div class="row">';}
+									<?php } if($num==4 || $num==3){ echo '</div>';}  if($num==4){ echo '<div class="row">';}
 									 if($num>=4){?>
 										<div class="col-md-<?php echo $casilla4; ?> col-xs-<?php echo $casilla4; ?> imgpagnoticias">
 											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[3]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
