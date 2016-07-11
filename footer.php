@@ -9,11 +9,11 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4 margin25"><h4><i class="fa fa-phone fa-lg"></i>Teléfonos:</h4></div>
-						<div class="col-md-8 margin25">(0251) 715.75.21 / 418.25.88</div>
+						<div class="col-md-8 margin25"><b>Compras</b> 0424-5786047<br> <b>Ventas</b> 0424-5790861<br> <b>Gerencia General</b> 0414-9545473</div>
 					</div>
 					<div class="row">
 						<div class="col-md-4 margin25"><h4><i class="fa fa-envelope fa-lg"></i> Email:</h4></div>
-						<div class="col-md-8 margin25">info@metroacero.com</div>
+						<div class="col-md-8 margin25">Ventas@metroacero.com<br> Compras@metroacero.com <br> <b>Gerencia General</b> Jpadilla@metroacero.com</div>
 					</div>
 				</div>
 				<div class="col-md-6">

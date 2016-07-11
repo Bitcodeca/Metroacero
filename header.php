@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="msvalidate.01" content="406799D64711F5C19B48CD297396FE17" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-        <title> Metroacero</title>
+        <title> Metroacero de Venezuela</title>
 		<?php wp_head(); ?>
 		<link rel="icon" type="image/png" href="<?php echo get_bloginfo('template_directory');?>/img/favicon.ico">
         <link href='https://fonts.googleapis.com/css?family=Poppins:400|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
