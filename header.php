@@ -10,7 +10,7 @@
 		<link rel="icon" type="image/png" href="<?php echo get_bloginfo('template_directory');?>/img/favicon.ico">
         <link href='https://fonts.googleapis.com/css?family=Poppins:400|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 	</head>
-	<body style="overflow-x: hidden;" ng-app="contactApp">
+	<body style="overflow-x: hidden;" ng-app="contactApp" oncontextmenu="return false;">
         <?php include_once("analyticstracking.php") ?>
 	<center>
 		<a href="http://metroacero.com/"><img src="<?php echo get_bloginfo('template_directory');?>/img/logo.png" class="img-responsive logoprincipal hvr-bob"></a>
