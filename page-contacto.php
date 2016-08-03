@@ -21,7 +21,7 @@
 						<h4><i class="fa fa-phone fa-lg"></i>Teléfonos: <small>Compras 0424-5786047, Ventas 0424-5790861, <b>Gerencia General</b> 0414-954.54.73</small></h4>
 					</div>
 					<div class="row margin10 wow fadeIn" data-wow-delay="0.2s">
-						<h4><i class="fa fa-envelope fa-lg"></i>Correos: <small>Ventas@metroacero.com, rrhh@metroacero.com, <b>Gerencia General</b> Jpadilla@metroacero.com</small></h4>
+						<h4><i class="fa fa-envelope fa-lg"></i>Correos: <small>Ventas@metroacero.com, Gerenciadeventas@metroacero.com, rrhh@metroacero.com, <b>Gerencia General</b> Jpadilla@metroacero.com</small></h4>
 					</div>
 				</div>
 			</div>
