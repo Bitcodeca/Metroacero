@@ -38,10 +38,10 @@
         </ul>
     <div class="social">
         <ul>
-            <li><a href="#" target="_blank" class="fa fa-facebook fa-lg"></a></li>
-            <li><a href="#" target="_blank" class="fa fa-instagram fa-lg"></a></li>
-            <li><a href="#" target="_blank" class="fa fa-twitter fa-lg"></a></li>
-            <li><a href="#" target="_blank" class="fa fa-youtube fa-lg"></a></li>
-            <li><a href="#" class="fa fa-envelope fa-lg"></a></li>
+            <li><a href="https://www.facebook.com/Metroacero-de-Venezuela-978608822267586/?fref=ts" target="_blank" class="fa fa-facebook fa-lg"></a></li>
+            <li><a href="https://www.instagram.com/metroacerove/" target="_blank" class="fa fa-instagram fa-lg"></a></li>
+            <li><a href="https://www.instagram.com/metroacerove/" target="_blank" class="fa fa-twitter fa-lg"></a></li>
+            <li><a href="https://www.youtube.com/channel/UC34QAPmLp-CeDnDJBJDGsrg" target="_blank" class="fa fa-youtube fa-lg"></a></li>
+            <li><a href="http://metroacero.com/contacto/" class="fa fa-envelope fa-lg"></a></li>
         </ul>
     </div>
