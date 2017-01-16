@@ -1,180 +1,181 @@
 <?php get_header(); ?>
-<section class="paginaempresa" id="articulo">
-	<div class="clearfix paddingbot50"></div>
-	<div class="text-center">
-		<h2 class="letranaranja hvr-underline-from-center">Noticias</h2>
-	</div>
-        <?php $args=array('post_status' => 'publish', 'posts_per_page' => 100, 'order' => 'DESC', 'category_name'=>'noticias'); $my_query = new WP_Query($args);
-        if( $my_query->have_posts() ) { $x=0;
-          while ($my_query->have_posts()) : $my_query->the_post();
-            $categories = get_the_category(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-            $id = get_the_ID();
-            global $dynamic_featured_image;
-				$nth_image = $dynamic_featured_image -> get_all_featured_images( $id );
-				$num=count($nth_image);
-   				if($num>=5){$casilla1=6; $casilla2=6; $casilla3=6; $casilla4=6; $casilla5=12;} 
-				elseif($num==4){$casilla1=6; $casilla2=6; $casilla3=12; $casilla4=12;} 
-				elseif($num==3){$casilla1=12; $casilla2=12; $casilla3=12;} 
-				elseif($num==2){$casilla1=12; $casilla2=12;}
-				elseif($num==1){$casilla1=12;}
-				if ($x==0){ $x++; ?>
-			<div class="margin50 marginbot25 wow fadeIn" data-wow-delay="0.2s">
-				<div class="fondoblanco">
-			        <div class="container">
-       					<div class="row paginarow">
-	                      	<div class="col-md-6 col-xs-12">
-								 <h3 class="letranaranja hvr-underline-from-center"><?php echo get_the_title(); ?></h3>
-								 <p><?php echo get_the_content(); ?></p>
-							</div>
-							<?php if($num>0) { ?>
-								<div class="col-md-6 col-xs-12">
-									<?php if($num>0 && $num!=2){ echo '<div class="row">';} ?>
-										<div class="col-md-<?php echo $casilla1; ?> col-xs-<?php echo $casilla1; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[0]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[0]['full'];?>" class="">
-											</a>
-										</div>
+    <div class="tab-empresa">
+        
+        <div class="parallax-container">
+            <div class=parallax> <img src=<?php echo get_bloginfo('template_directory');?>/img/cover.jpg> </div>
+            <div class="banner-gradient"></div>
+        </div>
+        
+        <div class="fondogris">
+            <div class="container">
+                <div class="row marginbot0">
+                    <h3 class="letranaranja center-align" style="margin: 12px 0 7px 0;">COMPROMETIDOS CON VENEZUELA</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <h2 class="letranaranja marginbot10 bold">Noticias recientes</h2>
+            </div>
+            <div class="row marginbot0">
+                <?php $args=array('post_status' => 'publish', 'posts_per_page' => -1, 'order' => 'DESC', 'post_type'=>'post', 'category_name'=>'noticias'); $my_query = new WP_Query($args);
+                if( $my_query->have_posts() ) {
+                    $temas=array();
+                    while ($my_query->have_posts()) :
+                        $my_query->the_post();
+                        $id = get_the_ID();
+                        $grupoarray = get_the_terms( $post->ID , 'tema' ); 
+                        $noticia=$grupoarray[0]->name;
+                        if (!in_array($noticia, $temas)) { array_push($temas, $noticia); }
+                    endwhile;  
+                }
+                wp_reset_query(); ?>
+                <div class="filters button-group filters-button-group">
+                    <a href="javascript:void(0);" class="waves-effect waves-light galeria-a is-checked"  data-filter="*">TODOS</a>
+                    <?php foreach($temas as $tema){ 
+                        $string = preg_replace('#[ /-]+#', '-', $tema);
+                        echo '<a href="javascript:void(0);" class="waves-effect waves-light button galeria-a" data-filter="'.$string.'">'.$tema.'</a>';
+                     } ?>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="container" id="Container">
+            <div class="row grid isotope">
+                    <?php $args=array('post_status' => 'publish', 'posts_per_page' => -1, 'order' => 'DESC', 'post_type'=>'post', 'category_name'=>'noticias'); $my_query = new WP_Query($args);
+                    if( $my_query->have_posts() ) {
+                        $x=0;
+                        while ($my_query->have_posts()) :
+                            $my_query->the_post();
+                            $id = get_the_ID();
+                            $grupoarray = get_the_terms( $post->ID , 'tema' ); 
+                            $noticia=$grupoarray[0]->name; 
+                            global $dynamic_featured_image;
+                            $nth_image = $dynamic_featured_image -> get_all_featured_images( $id );
+                            $num=count($nth_image);
+                            $string = preg_replace('#[ /-]+#', '-', $noticia);
+                            if($x<=1){ ?>
+                                <div class="grid-item grid-item--width2 ini-noticias" data-filter="<?php echo $string; ?>">
+                            <?php } else { ?>
+                                <div class="grid-item ini-noticias" data-filter="<?php echo $string; ?>">
+                            <?php } ?>
 
-									<?php if($num==3){ echo '</div>';} if($num==3){ echo '<div class="row">';}
-									 if($num>=2){ ?>
-										<div class="col-md-<?php echo $casilla2; ?> col-xs-<?php echo $casilla2; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[1]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[1]['full'];?>" class="">
-											</a>
-										</div>
+                                    <h5><a href="#"><?php echo $noticia; ?></a></h5>
+                                    <div class="p100x300 hoverable z-depth-1">
+                                        <a href="<?php the_permalink(); ?>" class="ini-noticias-a" id="<?php echo $x; ?>">
+                                            <div class="picture-gradient"></div>
+                                            <img src="<?php echo $nth_image[0]['full']; ?>" class="responsive-img" >
+                                        </a>
+                                        <span class="foto-rec"><a href="#"><?php echo $noticia; ?></a></span>
+                                    </div>
+                                    <p><i class="material-icons small">access_time</i> <?php the_time('F j, Y'); ?></p>
+                                    <a class="letranegra" href="<?php the_permalink(); ?>"><h4><?php the_title(); ?></h4></a>
+                                </div>
 
-									<?php } if($num>0 && $num!=2){ echo '</div>';} if($num>=3){ echo '<div class="row">';}
-									 if($num>=3){ ?>
-										<div class="col-md-<?php echo $casilla3; ?> col-xs-<?php echo $casilla3; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[2]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[2]['full'];?>" class="">
-											</a>
-										</div>
+                    <?php $x++; endwhile; }  wp_reset_query(); ?>
+            </div>
+                <div class="clearfix"></div>
+        </div>
+    </div>
 
-									<?php } if($num==4 || $num==3){ echo '</div>';}  if($num==4){ echo '<div class="row">';}
-									 if($num>=4){?>
-										<div class="col-md-<?php echo $casilla4; ?> col-xs-<?php echo $casilla4; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[3]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[3]['full'];?>" class="">
-											</a>
-										</div>
-
-									<?php } if($num>=4){ echo '</div>';}
-									 if($num>=5){ ?>
-									 <div class="row"> 
-										<div class="col-md-<?php echo $casilla5; ?> col-xs-<?php echo $casilla5; ?> imgpagnoticiasgrande">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[4]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[4]['full'];?>" class="">
-											</a>
-										</div>
-									</div>
-									<?php } ?>
-
-								</div>
-							<?php } ?>
-						</div>
-            		</div>
-		        </div>
-			</div>
-          <?php } else { $x=0; ?>
-    		<div class="container">
-    			<div class="margin25 marginbot25 wow fadeIn" data-wow-delay="0.2s">
-       					<div class="row paginarow">
-							<?php if($num>0) { ?>
-								<div class="col-md-6 col-xs-12">
-									<?php if($num>0 && $num!=2){ echo '<div class="row">';} ?>
-										<div class="col-md-<?php echo $casilla1; ?> col-xs-<?php echo $casilla1; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[0]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[0]['full'];?>" class="">
-											</a>
-										</div>
-
-									<?php if($num==3){ echo '</div>';} if($num==3){ echo '<div class="row">';}
-									 if($num>=2){ ?>
-										<div class="col-md-<?php echo $casilla2; ?> col-xs-<?php echo $casilla2; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[1]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[1]['full'];?>" class="">
-											</a>
-										</div>
-
-									<?php } if($num>0 && $num!=2){ echo '</div>';} if($num>=3){ echo '<div class="row">';}
-									 if($num>=3){ ?>
-										<div class="col-md-<?php echo $casilla3; ?> col-xs-<?php echo $casilla3; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[2]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[2]['full'];?>" class="">
-											</a>
-										</div>
-
-									<?php } if($num==4 || $num==3){ echo '</div>';}  if($num==4){ echo '<div class="row">';}
-									 if($num>=4){?>
-										<div class="col-md-<?php echo $casilla4; ?> col-xs-<?php echo $casilla4; ?> imgpagnoticias">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[3]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[3]['full'];?>" class="">
-											</a>
-										</div>
-
-									<?php } if($num>=4){ echo '</div>';}
-									 if($num>=5){ ?>
-									 <div class="row"> 
-										<div class="col-md-<?php echo $casilla5; ?> col-xs-<?php echo $casilla5; ?> imgpagnoticiasgrande">
-											<a class="fancybox hvr-glow"  href="<?php echo $nth_image[4]['full']; ?>" data-fancybox-group="<?php echo $id; ?>">
-												<img src ="<?php echo $nth_image[4]['full'];?>" class="">
-											</a>
-										</div>
-									</div>
-									<?php } ?>
-
-								</div>
-							<?php } ?>
-	                      	<div class="col-md-6 col-xs-12">
-								 <h3 class="letranaranja hvr-underline-from-center"><?php echo get_the_title(); ?></h3>
-								 <p><?php echo get_the_content(); ?></p>
-							</div>
-						</div>
-        		</div>
-    		</div>
-      <?php } endwhile; }  wp_reset_query(); ?>
-	<div class="clearfix paddingbot50"></div>
-</section>
-		<script>
-			jQuery(document).ready(function ($) {
-			    jQuery('.fancybox').attr('rel', 'media-gallery').fancybox({
-			        prevEffect: 'none',
-			        nextEffect: 'none',
-			        closeBtn: true,
-			        arrows: true,
-			        nextClick: true,
-			        helpers: {
-			           title	: {
-							type: 'float'
-						},
-						thumbs	: {
-							width	: 100,
-							height	: 100
-						},
-			         onUpdate:function(){
-			          jQuery('#fancybox-thumbs ul').draggable({
-			            axis: "x"
-			          });
-			          var posXY = '';
-			          jQuery('.fancybox-skin').draggable({
-			            axis: "x",
-			            drag: function(event,ui){
-			              // get position
-			                        posXY = ui.position.left;
-			                        // if drag distance bigger than +- 100px: cancel drag function..
-			                        if(posXY > 100){return false;}
-			              if(posXY < -100){return false;}
-			            },
-			            stop: function(){
-			                        // ... and get next oder previous image
-			              if(posXY > 95){jQuery.fancybox.prev();}
-			              if(posXY < -95){jQuery.fancybox.next();}
-			            }
-			          });
-			        }
-					}
-			    });
-			});
-		</script>
 <?php get_footer(); ?>
+    <script>
+        jQuery(document).ready(function(){
+            var itemSelector = '.grid-item'; 
+            var $container = jQuery('.grid').isotope({
+                    itemSelector: '.grid-item',
+                    layoutMode: 'fitRows',
+                    percentPosition: true
+                }); 
+            //Ascending order
+            var responsiveIsotope = [
+                [480, 4],
+                [720, 6]
+            ]; 
+            var itemsPerPageDefault = 10;
+            var itemsPerPage = defineItemsPerPage();
+            var currentNumberPages = 1;
+            var currentPage = 1;
+            var currentFilter = '*';
+            var filterAtribute = 'data-filter';
+            var pageAtribute = 'data-page';
+            var pagerClass = 'isotope-pager'; 
+            function changeFilter(selector) {
+                $container.isotope({
+                    filter: selector
+                });
+            } 
+            function goToPage(n) {
+                currentPage = n; 
+                var selector = itemSelector;
+                    selector += ( currentFilter != '*' ) ? '['+filterAtribute+'="'+currentFilter+'"]' : '';
+                    selector += '['+pageAtribute+'="'+currentPage+'"]'; 
+                changeFilter(selector);
+            } 
+            function defineItemsPerPage() {
+                var pages = itemsPerPageDefault; 
+                for( var i = 0; i < responsiveIsotope.length; i++ ) {
+                    if( jQuery(window).width() <= responsiveIsotope[i][0] ) {
+                        pages = responsiveIsotope[i][1];
+                        break;
+                    } 
+                } 
+                return pages;
+            }
+
+            function setPagination() { 
+                var SettingsPagesOnItems = function(){ 
+                    var itemsLength = $container.children(itemSelector).length; 
+                    var pages = Math.ceil(itemsLength / itemsPerPage);
+                    var item = 1;
+                    var page = 1;
+                    var selector = itemSelector;
+                        selector += ( currentFilter != '*' ) ? '['+filterAtribute+'="'+currentFilter+'"]' : ''; 
+                    $container.children(selector).each(function(){
+                        if( item > itemsPerPage ) {
+                            page++;
+                            item = 1;
+                        }
+                        jQuery(this).attr(pageAtribute, page);
+                        item++;
+                    }); 
+                    currentNumberPages = page; 
+                }();
+
+                var CreatePagers = function() { 
+                    var $isotopePager = ( jQuery('.'+pagerClass).length == 0 ) ? jQuery('<div class="'+pagerClass+'"></div>') : jQuery('.'+pagerClass); 
+                    $isotopePager.html(''); 
+                    for( var i = 0; i < currentNumberPages; i++ ) {
+                        var $pager = jQuery('<a href="javascript:void(0);" class="pager" '+pageAtribute+'="'+(i+1)+'"></a>');
+                            $pager.html(i+1); 
+                            $pager.click(function(){
+                                var page = jQuery(this).eq(0).attr(pageAtribute);
+                                goToPage(page);
+                            }); 
+                        $pager.appendTo($isotopePager);
+                    } 
+                    $container.after($isotopePager); 
+                }(); 
+            } 
+            setPagination();
+            goToPage(1); 
+            //Adicionando Event de Click para as categorias
+            jQuery('.filters a').click(function(){
+                var filter = jQuery(this).attr(filterAtribute);
+                jQuery(".filters a").removeClass( "is-checked" );
+                jQuery(this).addClass( "is-checked" );
+                currentFilter = filter; 
+                setPagination();
+                goToPage(1); 
+            }); 
+            //Evento Responsivo
+            jQuery(window).resize(function(){
+                itemsPerPage = defineItemsPerPage();
+                setPagination();
+                goToPage(1);
+            });
+
+        });   
+    </script>
+        

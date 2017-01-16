@@ -1,105 +1,94 @@
 <?php get_header(); ?>
-<section class="paginaempresa">
-	<div class="clearfix paddingbot50"></div>
-	<div class="text-center">
-		<h2 class="letranaranja hvr-underline-from-center">Galería</h2>
-	</div>
-	<div class="fondoblanco">
-	    <div class="gallery margin50">
-			        <?php $args=array('post_status' => 'publish', 'posts_per_page' => 50, 'order' => 'DESC', 'category_name'=>'galeria'); $my_query = new WP_Query($args);
-	            if( $my_query->have_posts() ) {
-	              while ($my_query->have_posts()) : $my_query->the_post();
-	                $categories = get_the_category(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-	                $id = get_the_ID();
-	                global $dynamic_featured_image;
-	   				$nth_image = $dynamic_featured_image -> get_all_featured_images( $id ); ?>
-							<div class="gallery-cell">
-								<a class="fancybox"  href="<?php echo $nth_image[0]['full']; ?>">
-									<img src ="<?php echo $nth_image[0]['full'];?>" class="">
-								</a>
-							</div>
-	              <?php endwhile; }  wp_reset_query(); ?>
-	    </div>
-	</div>
-	<div class="clearfix paddingbot50 margin50"></div>
-	<div class="text-center">
-		<h2 class="letranaranja hvr-underline-from-center">Videos</h2>
-	</div>
-	    <div class="gallery-video margin50">
-			        <?php $args=array('post_status' => 'publish', 'posts_per_page' => 50, 'order' => 'DESC', 'category_name'=>'video'); $my_query = new WP_Query($args);
-	            if( $my_query->have_posts() ) {
-	              while ($my_query->have_posts()) : $my_query->the_post();
-	                $categories = get_the_category(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-	                $id = get_the_ID();
-	                global $dynamic_featured_image;
-	   				$nth_image = $dynamic_featured_image -> get_all_featured_images( $id ); ?>
-							<div class="gallery-cell-video">
-								<?php the_content(); ?>
-							</div>
-	              <?php endwhile; }  wp_reset_query(); ?>
-	    </div>
+    <div class="tab-empresa">
+        
+        <div class="parallax-container">
+            <div class=parallax> <img src=<?php echo get_bloginfo('template_directory');?>/img/cover2.jpg> </div>
+            <div class="banner-gradient"></div>
+        </div>
+        
+        <div class="fondogris">
+            <div class="container">
+                <div class="row marginbot0">
+                    <h3 class="letranaranja center-align" style="margin: 12px 0 7px 0;">COMPROMETIDOS CON VENEZUELA</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <h2 class="letranaranja marginbot10 bold">Galería</h2>
+            </div>
+            <div class="row marginbot0">
+                <?php $args=array('post_status' => 'publish', 'posts_per_page' => -1, 'order' => 'DESC', 'post_type'=>'post', 'category_name'=>'galeria'); $my_query = new WP_Query($args);
+                if( $my_query->have_posts() ) {
+                    $temas=array();
+                    while ($my_query->have_posts()) :
+                        $my_query->the_post();
+                        $id = get_the_ID();
+                        $grupoarray = get_the_terms( $post->ID , 'tema' ); 
+                        $noticia=$grupoarray[0]->name;
+                        if (!in_array($noticia, $temas)) { array_push($temas, $noticia); }
+                    endwhile;  
+                }
+                wp_reset_query(); ?>
+                <form class="controls" id="Filters">
+                    <a class="waves-effect waves-light filter galeria-a active"  data-filter="*">TODOS</a>
+                    <?php foreach($temas as $tema){ 
+                        $string = preg_replace('#[ /-]+#', '-', $tema);
+                        echo '<a class="waves-effect waves-light filter galeria-a" data-filter=".'.$string.'">'.$tema.'</a>';
+                     } ?>
+                </form>
+            </div>
+        </div>
+        <hr />
+        <div class="container paddingbot25" id="Container">
+            <div class="row">
+                <?php $args=array('post_status' => 'publish', 'posts_per_page' => 12, 'order' => 'ASC', 'post_type'=>'post', 'category_name'=>'galeria');
+                $my_query = new WP_Query($args);
+                if( $my_query->have_posts() ) {
+                    while ($my_query->have_posts()) : 
+                        $my_query->the_post();
+                        $id = get_the_ID();
+                        $grupoarray = get_the_terms( $post->ID , 'tema' ); 
+                        $noticia=$grupoarray[0]->name; 
+                        global $dynamic_featured_image;
+                        $nth_image = $dynamic_featured_image -> get_all_featured_images( $id );
+                        $num=count($nth_image);
+                        $string = preg_replace('#[ /-]+#', '-', $noticia);
+                        foreach($nth_image as $image){ ?>
+                        <div class="col-xs-6 col-sm-4 col-md-3 mix <?php echo $string; ?> margintop25">
+                            <div class="p100x300 z-depth-1 hoverable">
+                                <img src="<?php echo $image['full']; ?>" class="galeria-cuadrada materialboxed" data-caption="<?php echo get_the_title(); ?>" >
+                                <span class="foto-rec"><a href="#"><?php echo $noticia; ?></a></span>
+                            </div>
+                        </div>
+                <?php } endwhile; }  wp_reset_query(); ?>
+            </div>
+            <div class="row">
+                <div class="pager-list center-align marginbot25 margintop25"></div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <h2 class="letranaranja marginbot10 bold">Videos</h2>
+            </div>
+        </div>
+        <hr />
+        <div class="container paddingbot25" id="Container">
+            <div class="row">
+            </div>
+        </div>
+    </div>
 
-	<div class="clearfix paddingbot50"></div>
-</section>
-<script>
-	jQuery(document).ready(function ($) {
-	    jQuery('.fancybox').attr('rel', 'media-gallery').fancybox({
-	        prevEffect: 'none',
-	        nextEffect: 'none',
-	        closeBtn: true,
-	        arrows: true,
-	        nextClick: true,
-	        helpers: {
-	           title	: {
-					type: 'float'
-				},
-				thumbs	: {
-					width	: 100,
-					height	: 100
-				},
-	         onUpdate:function(){
-	          jQuery('#fancybox-thumbs ul').draggable({
-	            axis: "x"
-	          });
-	          var posXY = '';
-	          jQuery('.fancybox-skin').draggable({
-	            axis: "x",
-	            drag: function(event,ui){
-	              // get position
-	                        posXY = ui.position.left;
-	                        // if drag distance bigger than +- 100px: cancel drag function..
-	                        if(posXY > 100){return false;}
-	              if(posXY < -100){return false;}
-	            },
-	            stop: function(){
-	                        // ... and get next oder previous image
-	              if(posXY > 95){jQuery.fancybox.prev();}
-	              if(posXY < -95){jQuery.fancybox.next();}
-	            }
-	          });
-	        }
-			}
-	    });
-	});
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/1.1.1/flickity.pkgd.js"></script>
-<script>
-	jQuery('.gallery').flickity({
-	  cellAlign: 'left',
-	  contain: true,
-	  autoPlay: true,
-	  imagesLoaded: true,
-	  freeScroll: true,
-	  pageDots: false
-	});
-	jQuery('.gallery-video').flickity({
-	  cellAlign: 'left',
-	  contain: true,
-	  autoPlay: false,
-	  imagesLoaded: true,
-	  freeScroll: false,
-	  pageDots: false
-	});
-</script>
-
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        jQuery(function(){
+            jQuery('#Container').mixItUp({
+                animation: { duration: 200 },
+                pagination: { limit: 12, loop: true, prevButtonHTML: '<a><h4>Anterior</h4></a>', nextButtonHTML: '<a ><h4>Siguiente</h4></a>' },
+                selectors: { filter: '.filter',pagersWrapper: '.pager-list' }
+            });
+        });
+    </script>
 <?php get_footer(); ?>

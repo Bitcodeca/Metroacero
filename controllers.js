@@ -10,8 +10,8 @@ app.controller('ContactController', function ($scope, $http, $compile) {
         if (contactform.$valid) {
             $http({
                 method  : 'POST',
-                url     : 'http://metroacero.com/wp-content/themes/metroacero/contact-form.php',
-                data    : $.param($scope.formData),
+                url     : "http://metroacero.com/wp-content/themes/metroacero v3/contact-form.php",
+                data    : jQuery.param($scope.formData),
                 headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
             }).success(function(data){
                 console.log(data);

@@ -16,21 +16,28 @@ if (isset($_POST['nombre']) && isset($_POST['email']) && isset($_POST['empresa']
     $mail->CharSet = 'UTF-8';
     $mail->From = $_POST['email'];
     $mail->FromName = $_POST['nombre'];
-    if ($motivo=='compras'){
+    if ($motivo=='compra'){
         $mail->AddAddress('compras@metroacero.com');
         $mail->Subject = $_POST['empresa'];
         $mail->Body = "Nombre: " . $_POST['nombre'] . "\r\n\r\nEmail: " . $_POST['email'] . "\r\n\r\nTeléfono: " . $_POST['telefono'] . "\r\n\r\nEmpresa: " . $_POST['empresa'] . "\r\n\r\nMotivo: " . $motivo . "\r\n\r\nMensaje: " . stripslashes($_POST['message']);
     }
-    else if ($motivo=='ventas'){
+    elseif ($motivo=='venta'){
         $mail->AddAddress('ventas@metroacero.com');
         $mail->Subject = $_POST['empresa'];
         $mail->Body = "Nombre: " . $_POST['nombre'] . "\r\n\r\nEmail: " . $_POST['email'] . "\r\n\r\nTeléfono: " . $_POST['telefono'] . "\r\n\r\nEmpresa: " . $_POST['empresa'] . "\r\n\r\nMotivo: " . $motivo . "\r\n\r\nMensaje: " . stripslashes($_POST['message']);
-    }
-    else if ($motivo=='rrhh'){
+    } elseif ($motivo=='otro') {
         $mail->AddAddress('rrhh@metroacero.com');
         $mail->Subject = $_POST['empresa'];
         $mail->Body = "Nombre: " . $_POST['nombre'] . "\r\n\r\nEmail: " . $_POST['email'] . "\r\n\r\nTeléfono: " . $_POST['telefono'] . "\r\n\r\nEmpresa: " . $_POST['empresa'] . "\r\n\r\nMotivo: " . $motivo . "\r\n\r\nMensaje: " . stripslashes($_POST['message']);
-    } 
+    } elseif ($motivo=='gerencia') {
+        $mail->AddAddress('gerenciadeventas@metroacero.com');
+        $mail->Subject = $_POST['empresa'];
+        $mail->Body = "Nombre: " . $_POST['nombre'] . "\r\n\r\nEmail: " . $_POST['email'] . "\r\n\r\nTeléfono: " . $_POST['telefono'] . "\r\n\r\nEmpresa: " . $_POST['empresa'] . "\r\n\r\nMotivo: " . $motivo . "\r\n\r\nMensaje: " . stripslashes($_POST['message']);
+    } else {
+        $mail->AddAddress('info@metroacero.com');
+        $mail->Subject = $_POST['empresa'];
+        $mail->Body = "Nombre: " . $_POST['nombre'] . "\r\n\r\nEmail: " . $_POST['email'] . "\r\n\r\nTeléfono: " . $_POST['telefono'] . "\r\n\r\nEmpresa: " . $_POST['empresa'] . "\r\n\r\nMotivo: " . $motivo . "\r\n\r\nMensaje: " . stripslashes($_POST['message']); 
+    }
 
     if(!$mail->send()) {
         $data = array('success' => false, 'message' => 'Message could not be sent. Mailer Error: ' . $mail->ErrorInfo);

@@ -1,60 +1,134 @@
 	
-		<footer id="footer">
-			<div class="container footerinner">
-				<div class="col-md-6">
-					<h3>Contactos</h3><hr class="hrfooter" />
-					<div class="row">
-						<div class="col-md-4 margin10"><h4><i class="fa fa-map-marker fa-lg"></i> Dirección:</h4></div>
-						<div class="col-md-8 margin10">Zona industrial de Cabudare, Sector La Montañita, Cabudare - Edo. Lara.</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 margin25"><h4><i class="fa fa-phone fa-lg"></i>Teléfonos:</h4></div>
-						<div class="col-md-8 margin25"><b>Ventas</b> 0424-5790861<br> <b>Gerencia General</b> 0414-9545473</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4 margin25"><h4><i class="fa fa-envelope fa-lg"></i> Email:</h4></div>
-						<div class="col-md-8 margin25">Ventas@metroacero.com<br>Gerenciadeventas@metroacero.com<br> <b>Gerencia General</b> Jpadilla@metroacero.com</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-				<h3>Social Media</h3><hr class="hrfooter" />
-				<h4 class="text-center marginbot25">¡Síguenos en nuestras Redes Sociales!</h4>
-                            <a href="#" target="_blank" class="redessocialesinner">
-                                <i class="fa fa-facebook fa-2x"></i> Metroacero
-                            </a>
-                            <br class="brinicio">
-                            <a href="#" target="_blank" class="redessocialesinner">
-                                <i class="fa fa-twitter fa-2x"></i> @Metroacero
-                            </a>
-                            <br class="brinicio">
-                            <a href="#" target="_blank" class="redessocialesinner">
-                                <i class="fa fa-youtube fa-2x"></i> Metroacero
-                            </a>
-                            <br class="brinicio">
-                            <a href="#" target="_blank" class="redessocialesinner">
-                                <i class="fa fa-instagram fa-2x"></i> @Metroacero
-                            </a>
-				</div>
-			</div>
-			<div class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p class="copyright text-center small">&copy; 2016 Metroacero de Venezuela C.A. | RIF: J-40426759-0 | Todos los Derechos Reservados | Desarrollado por <i><a href="http://bitcodeweb.com/" style="color:#fff">Bitcode</a></i></p>
-                        </div>
+		</main>
+	<footer>
+        <div class="fondogris">
+            <div class="container paddingtop25">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <h5>MAPA DEL SITIO</h5>
+                        <?php  wp_nav_menu( array( 'theme_location' => 'user', 
+                                'menu_id' => 'footer-nav', 
+                                'menu_class' => '', 
+                                'walker' => new Materialize_Walker_Desktop_Nav_Menu() ) 
+                                ); ?>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <h5>SOCIAL MEDIA</h5>
+                                <table style=width:100%>
+                                    <tr>
+                                        <th>
+                                            <a href="https://www.instagram.com/metroacerove/" target="_blank"><img class="responsive-img rrss" src="<?php echo get_bloginfo('template_directory');?>/img/instagram.svg" width="36" height="36"></a>
+                                        </th>
+                                        <th>
+                                            <a href="https://www.facebook.com/metroacerove/" target="_blank"><img class="responsive-img rrss" src="<?php echo get_bloginfo('template_directory');?>/img/facebook-01.svg" width="36" height="36"></a>
+                                        </th>
+                                        <th>
+                                            <a href="https://twitter.com/Metroacerove" target="_blank"><img class="responsive-img rrss" src="<?php echo get_bloginfo('template_directory');?>/img/twitter.svg" width="36" height="36"></a>
+                                        </th>
+                                        <th>
+                                            <a href="https://www.youtube.com/channel/UC34QAPmLp-CeDnDJBJDGsrg" target="_blank"><img class="responsive-img rrss" src="<?php echo get_bloginfo('template_directory');?>/img/youtube.svg" width="36" height="36"></a>
+                                        </th>
+                                    </tr>
+                                </table>
+                        <h5>EMPLEADOS Y SOCIOS</h5>
+                        <table class="margintop25" style=width:100%>
+                            <tr class="">
+                                <th class="left-align footer-th"><a href="#" class="footer-links">Portal corporativo</a></th>
+                            </tr>
+                        </table>
+                        <h5 class="margintop25">CLIENTES</h5>
+                        
+                        <table class="margintop25" style=width:100%>
+                            <tr class="">
+                                <th class="left-align footer-th"><a href="#" class="footer-links">Portal de clientes</a></th>
+                            </tr>
+                            <tr class="">
+                                <th class="left-align footer-th"><a href="#" class="footer-links">Gestión comercial</a></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <h5 class="margintop10">CONTACTO</h5>
+                        <table style=width:100%>
+                            <tr>
+                                <th class="thfooter">
+                                    <p>
+                                        <i class="material-icons verticalalign">phone</i>
+                                        TELÉFONO:
+                                    </p>
+                                </th>
+                                <th style="padding-bottom: 0px; padding-top: 10px;">
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th style="padding-bottom: 5px; padding-top: 0px; width:90px">
+                                                <p><b>Ventas </b></p>
+                                            </th>
+                                            <th style="padding-bottom: 5px; padding-top: 0px;">
+                                                <p>0251-4172428</p>
+                                                <p>0424-5790861</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th style="padding-bottom: 5px; padding-top: 0px; width:90px">
+                                                <p><b>Compras </b></p>
+                                            </th>
+                                            <th style="padding-bottom: 5px; padding-top: 0px;">
+                                                <p>0251-4172438</p>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="thfooter">
+                                    <p>
+                                        <i class="material-icons verticalalign">location_on</i>
+                                        UBICACIÓN:
+                                    </p>
+                                </th>
+                                <th>
+                                    <p>Zona industrial de Cabudare, Sector La Montañita, Cabudare - Edo. Lara.</p>
+                                </th> 
+                            </tr>
+                            <tr>
+                                <th class="thfooter">
+                                    <p><i class="material-icons verticalalign">email</i> EMAIL:</p>
+                                </th>
+                                <th>
+                                    <p>ventas@metroacero.com</p>
+                                    <p>gerenciadeventas@metroacero.com</p>
+                                </th> 
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>
-		</footer>
+        </div>
+		<div class="footer grey darken-4">
+            <div class="container-fluid">
+                <div class="row marginbot0">
+                    <div class="col-md-12">
+                        <p class="copyright center-align small"> © 2016 Metroacero de Venezuela C.A. | RIF: J-40426759-0 | Todos los Derechos Reservados | Desarrollado por  <a href="http://bitcodeweb.com/" target="_blank"><img src="<?php echo get_bloginfo('template_directory');?>/img/logobitcodeb.svg" height="20px" width="auto" class="verticalalignbottom" style="vertical-align: sub;"></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
 	<?php wp_footer(); ?>
+	
         <script>
             new WOW().init();
         </script>
         <script>
-        jQuery(function(){
-		    jQuery("ul#ticker01").liScroll();
-		});
+             jQuery(document).ready(function(){
+                jQuery(".button-collapse").sideNav();
+                jQuery(".parallax").parallax();
+                jQuery("ul#ticker01").liScroll();
+                jQuery('ul.tabs').tabs();
+                jQuery('nav').pushpin({ top: jQuery('nav').offset().top });
+            });
         </script>
 	</body>
 </html>

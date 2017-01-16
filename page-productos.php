@@ -1,326 +1,3470 @@
-<?php get_header(); ?>
-<script>
-	this.metroaceroCustomization = function () {
-
-	var custom = new slicePathCustomization();
-	custom.minRadiusPercent = 0.37;
-	custom.maxRadiusPercent = 0.9;
-
-	return custom;
-	};
-
-	this.metroacero = function (helper, percent, custom) {
-
-	if (custom === null) {
-	    custom = metroaceroCustomization();
-	}
-
-	maxRadius = helper.wheelRadius * percent * custom.maxRadiusPercent;
-	minRadius = helper.wheelRadius * percent * custom.minRadiusPercent;
-
-	helper.setBaseValue(percent, custom);
-
-	helper.titleRadius = (maxRadius + minRadius) / 2.15;
-	helper.setTitlePos();
-
-	slicePathString = [helper.MoveTo(helper.startAngle+45, minRadius/1.3),
-	                     helper.ArcTo(minRadius/ 2, helper.startAngle+45, maxRadius),
-	                     helper.ArcTo(maxRadius, helper.endAngle+45, maxRadius),
-	                     helper.ArcBackTo(maxRadius/ 4, helper.endAngle+45, minRadius/1.3),
-	                     helper.ArcBackTo(minRadius/1.3, helper.startAngle+45, minRadius/1.3),
-	                     helper.Close()];
-
-	return {
-	    slicePathString: slicePathString,
-	    linePathString: "",
-	    titlePosX: helper.titlePosX,
-	    titlePosY: helper.titlePosY
-	};
-	};
-</script>
-<script type="text/javascript">
-jQuery(document).ready(function() {
-    function checkWidth() {
-        var w = jQuery(window).width();
-        if (w>1440){
-		    window.onload=function(){
-		        var n=new wheelnav("indexDiv");
-		        n.slicePathFunction=slicePath().metroacero;
-		        n.sliceHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.lineHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.sliceSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.lineSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.titleWidth=210;
-		        n.animatetime = 700;
-				n.navAngle = 90;
-		        n.animateeffect = 'linear';
-		        n.colors = colorpalette.metroacerocolores;
-		        n.spreaderPathInAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#555' };
-		        n.spreaderPathOutAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#FFF' };
-		        n.spreaderTitleInAttr = { fill: '#555' };
-		        n.spreaderTitleOutAttr = { fill: '#555' };
-				n.slicePathAttr = { stroke: '#fff', 'stroke-width': 12 };
-				n.linePathAttr = { stroke: '#fff', 'stroke-width': 12 };
-		        n.createWheel(["imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tubocuadrado.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuborectangular.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuboenlamina.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/laminasdeacero.png"]);
-		        createTabHandler(n.navItems[0].navItem,"productosnav","tuboscuadrados");
-		        createTabHandler(n.navItems[1].navItem,"productosnav","tubosrectangulares");
-		        createTabHandler(n.navItems[2].navItem,"productosnav","tubosfriocaliente");
-		        createTabHandler(n.navItems[3].navItem,"productosnav","laminasfriocaliente")
-		    };
-        } else if (w<=1440 && w>1280){
-		    window.onload=function(){
-		        var n=new wheelnav("indexDiv");
-		        n.slicePathFunction=slicePath().metroacero;
-		        n.sliceHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.lineHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.sliceSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.lineSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.titleWidth=180;
-		        n.animatetime = 700;
-				n.navAngle = 90;
-		        n.animateeffect = 'linear';
-		        n.colors = colorpalette.metroacerocolores;
-		        n.spreaderPathInAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#555' };
-		        n.spreaderPathOutAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#FFF' };
-		        n.spreaderTitleInAttr = { fill: '#555' };
-		        n.spreaderTitleOutAttr = { fill: '#555' };
-				n.slicePathAttr = { stroke: '#fff', 'stroke-width': 12 };
-				n.linePathAttr = { stroke: '#fff', 'stroke-width': 12 };
-		        n.createWheel(["imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tubocuadrado.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuborectangular.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuboenlamina.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/laminasdeacero.png"]);
-		        createTabHandler(n.navItems[0].navItem,"productosnav","tuboscuadrados");
-		        createTabHandler(n.navItems[1].navItem,"productosnav","tubosrectangulares");
-		        createTabHandler(n.navItems[2].navItem,"productosnav","tubosfriocaliente");
-		        createTabHandler(n.navItems[3].navItem,"productosnav","laminasfriocaliente")
-		    };
-        } else if (w>768 && w<=1280){
-		    window.onload=function(){
-		        var n=new wheelnav("indexDiv");
-		        n.slicePathFunction=slicePath().metroacero;
-		        n.sliceHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.lineHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.sliceSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.lineSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.titleWidth=160;
-		        n.animatetime = 700;
-				n.navAngle = 90;
-		        n.animateeffect = 'linear';
-		        n.colors = colorpalette.metroacerocolores;
-		        n.spreaderPathInAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#555' };
-		        n.spreaderPathOutAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#FFF' };
-		        n.spreaderTitleInAttr = { fill: '#555' };
-		        n.spreaderTitleOutAttr = { fill: '#555' };
-				n.slicePathAttr = { stroke: '#fff', 'stroke-width': 9 };
-				n.linePathAttr = { stroke: '#fff', 'stroke-width': 9 };
-		        n.createWheel(["imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tubocuadrado.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuborectangular.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuboenlamina.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/laminasdeacero.png"]);
-		        createTabHandler(n.navItems[0].navItem,"productosnav","tuboscuadrados");
-		        createTabHandler(n.navItems[1].navItem,"productosnav","tubosrectangulares");
-		        createTabHandler(n.navItems[2].navItem,"productosnav","tubosfriocaliente");
-		        createTabHandler(n.navItems[3].navItem,"productosnav","laminasfriocaliente")
-		    };
-        } else if (w>560 && w<=768) {
-              window.onload=function(){
-		        var n=new wheelnav("indexDiv");
-		        n.slicePathFunction=slicePath().metroacero;
-		        n.sliceHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.lineHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.sliceSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.lineSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.titleWidth=130;
-		        n.animatetime = 700;
-				n.navAngle = 90;
-		        n.animateeffect = 'linear';
-		        n.colors = colorpalette.metroacerocolores;
-		        n.spreaderPathInAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#555' };
-		        n.spreaderPathOutAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#FFF' };
-		        n.spreaderTitleInAttr = { fill: '#555' };
-		        n.spreaderTitleOutAttr = { fill: '#555' };
-				n.slicePathAttr = { stroke: '#fff', 'stroke-width': 3 };
-				n.linePathAttr = { stroke: '#fff', 'stroke-width': 3 };
-		        n.createWheel(["imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tubocuadrado.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuborectangular.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuboenlamina.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/laminasdeacero.png"]);
-		        createTabHandler(n.navItems[0].navItem,"productosnav","tuboscuadrados");
-		        createTabHandler(n.navItems[1].navItem,"productosnav","tubosrectangulares");
-		        createTabHandler(n.navItems[2].navItem,"productosnav","tubosfriocaliente");
-		        createTabHandler(n.navItems[3].navItem,"productosnav","laminasfriocaliente")
-		    };
-        } else if (w>414 && w<560) {
-              window.onload=function(){
-		        var n=new wheelnav("indexDiv");
-		        n.slicePathFunction=slicePath().metroacero;
-		        n.sliceHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.lineHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.sliceSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.lineSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.titleWidth=120;
-		        n.animatetime = 700;
-				n.navAngle = 90;
-		        n.animateeffect = 'linear';
-		        n.colors = colorpalette.metroacerocolores;
-		        n.spreaderPathInAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#555' };
-		        n.spreaderPathOutAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#FFF' };
-		        n.spreaderTitleInAttr = { fill: '#555' };
-		        n.spreaderTitleOutAttr = { fill: '#555' };
-				n.slicePathAttr = { stroke: '#fff', 'stroke-width': 3 };
-				n.linePathAttr = { stroke: '#fff', 'stroke-width': 3 };
-		        n.createWheel(["imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tubocuadrado.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuborectangular.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuboenlamina.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/laminasdeacero.png"]);
-		        createTabHandler(n.navItems[0].navItem,"productosnav","tuboscuadrados");
-		        createTabHandler(n.navItems[1].navItem,"productosnav","tubosrectangulares");
-		        createTabHandler(n.navItems[2].navItem,"productosnav","tubosfriocaliente");
-		        createTabHandler(n.navItems[3].navItem,"productosnav","laminasfriocaliente")
-		    };
-        } else if (w<=414) {
-              window.onload=function(){
-		        var n=new wheelnav("indexDiv");
-		        n.slicePathFunction=slicePath().metroacero;
-		        n.sliceHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.lineHoverAttr = { stroke: '#36a7c9', 'stroke-width': 2 };
-		        n.sliceSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.lineSelectedAttr = { stroke: '#36a7c9', 'stroke-width': 4 };
-		        n.titleWidth=90;
-		        n.animatetime = 700;
-				n.navAngle = 90;
-		        n.animateeffect = 'linear';
-		        n.colors = colorpalette.metroacerocolores;
-		        n.spreaderPathInAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#555' };
-		        n.spreaderPathOutAttr = { fill: '#FFF', 'stroke-width': 3, stroke: '#FFF' };
-		        n.spreaderTitleInAttr = { fill: '#555' };
-		        n.spreaderTitleOutAttr = { fill: '#555' };
-				n.slicePathAttr = { stroke: '#fff', 'stroke-width': 3 };
-				n.linePathAttr = { stroke: '#fff', 'stroke-width': 3 };
-		        n.createWheel(["imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tubocuadrado.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuborectangular.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/tuboenlamina.png",
-		                        "imgsrc:<?php echo get_bloginfo('template_directory');?>/img/laminasdeacero.png"]);
-		        createTabHandler(n.navItems[0].navItem,"productosnav","tuboscuadrados");
-		        createTabHandler(n.navItems[1].navItem,"productosnav","tubosrectangulares");
-		        createTabHandler(n.navItems[2].navItem,"productosnav","tubosfriocaliente");
-		        createTabHandler(n.navItems[3].navItem,"productosnav","laminasfriocaliente")
-		    };
-        }
-    }
-    checkWidth();
-});
-</script>
-<script>
-	createTabHandler=function(n,t,i){
-        n.mousedown(function(){
-            jQuery("#"+t+' a[href="#'+i+'"]').tab("show")})};
-</script>
-<section class="paginaempresa">
-	<div class="clearfix paddingbot50"></div>
-	<div class="text-center">
-		<h2 class="letranaranja hvr-underline-from-center">Productos</h2>
-	</div>
-	<div class="fondoblanco margin50">
-		<div class="row ruedaproductos">
-                <div id="indexDiv"></div>
+<?php get_header(); $x=0; ?>
+    <div class="tab-empresa">
+        
+        <div class="parallax-container">
+            <div class=parallax> <img src=<?php echo get_bloginfo('template_directory');?>/img/cover2.jpg> </div>
+            <div class="banner-gradient"></div>
+        </div>
+        
+        <div class="fondogris">
+            <div class="container">
+                <div class="row marginbot0">
+                    <h3 class="letranaranja center-align" style="margin: 12px 0 7px 0;">COMPROMETIDOS CON VENEZUELA</h3>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <h2 class="letranaranja marginbot10 bold">Catálogo de productos</h2>
+            </div>
+            <!--<div class="row">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>-->
+            <div class="row">
+                 <ul class="collapsible popout collap-catalogo" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-cuadrados.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Tubos Estructurales Cuadrados</a></span>
+                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#cuadrados"><i class="large material-icons scrollspy" id="cuadrados">&#xE913;</i></a>-->
+                        </div>
+                        <!--<div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Dimensiones Nominales (pesos y medidas)</h3>
+                                <img src=<?php //echo get_bloginfo('template_directory');?>/img/prod-cuadrado.svg width="150px" height="150px" class="responsive-img">
+                                <table class="responsive-table striped table-catalogo">
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Designación Comercial (HxB DN)</p>
+                                            </th>
+                                            <th>
+                                                <p>Espesor Nominal (e mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Radio Externo (R mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Sección Nominal (A cm&sup2;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Sección Nominal (P Kg/m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Serie Tubos Estructurales Conduven ECO</p>
+                                            </th>
+                                            <th>
+                                                <p>Serie Tubos Estructurales Estándar</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SL m&sup2;/m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SP m&sup2;/Ton)</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>60x60</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,02</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,23</p>
+                                            </th>
+                                            <th>
+                                                <p>57,97</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>70x70</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,92</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,27</p>
+                                            </th>
+                                            <th>
+                                                <p>57,72</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>90x90</p>
+                                            </th>
+                                            <th>
+                                                <p>2,50</p>
+                                            </th>
+                                            <th>
+                                                <p>7,50</p>
+                                            </th>
+                                            <th>
+                                                <p>8,54</p>
+                                            </th>
+                                            <th>
+                                                <p>6,70</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,35</p>
+                                            </th>
+                                            <th>
+                                                <p>51,81</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100</p>
+                                            </th>
+                                            <th>
+                                                <p>3,00</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>11,33</p>
+                                            </th>
+                                            <th>
+                                                <p>8,89</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,38</p>
+                                            </th>
+                                            <th>
+                                                <p>43,26</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100*</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,32</p>
+                                            </th>
+                                            <th>
+                                                <p>16,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,37</p>
+                                            </th>
+                                            <th>
+                                                <p>22,05</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>110x110</p>
+                                            </th>
+                                            <th>
+                                                <p>3,40</p>
+                                            </th>
+                                            <th>
+                                                <p>10,20</p>
+                                            </th>
+                                            <th>
+                                                <p>14,10</p>
+                                            </th>
+                                            <th>
+                                                <p>11,07</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,42</p>
+                                            </th>
+                                            <th>
+                                                <p>38,17</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>12,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,01</p>
+                                            </th>
+                                            <th>
+                                                <p>14,14</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,46</p>
+                                            </th>
+                                            <th>
+                                                <p>32,49</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,20</p>
+                                            </th>
+                                            <th>
+                                                <p>21,60</p>
+                                            </th>
+                                            <th>
+                                                <p>30,71</p>
+                                            </th>
+                                            <th>
+                                                <p>24,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,44</p>
+                                            </th>
+                                            <th>
+                                                <p>18,37</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135</p>
+                                            </th>
+                                            <th>
+                                                <p>4,30</p>
+                                            </th>
+                                            <th>
+                                                <p>12,90</p>
+                                            </th>
+                                            <th>
+                                                <p>21,85</p>
+                                            </th>
+                                            <th>
+                                                <p>17,15</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,52</p>
+                                            </th>
+                                            <th>
+                                                <p>30,20</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135*</p>
+                                            </th>
+                                            <th>
+                                                <p>8,00</p>
+                                            </th>
+                                            <th>
+                                                <p>24,00</p>
+                                            </th>
+                                            <th>
+                                                <p>38,44</p>
+                                            </th>
+                                            <th>
+                                                <p>30,18</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,53</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155*</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>175x175*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>65,30</p>
+                                            </th>
+                                            <th>
+                                                <p>51,26</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,65</p>
+                                            </th>
+                                            <th>
+                                                <p>12,60</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>5,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,50</p>
+                                            </th>
+                                            <th>
+                                                <p>41,75</p>
+                                            </th>
+                                            <th>
+                                                <p>32,77</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,77</p>
+                                            </th>
+                                            <th>
+                                                <p>23,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>52,36</p>
+                                            </th>
+                                            <th>
+                                                <p>41,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,76</p>
+                                            </th>
+                                            <th>
+                                                <p>18,59</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>75,80</p>
+                                            </th>
+                                            <th>
+                                                <p>59,51</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,75</p>
+                                            </th>
+                                            <th>
+                                                <p>12,54</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>57,96</p>
+                                            </th>
+                                            <th>
+                                                <p>45,40</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,84</p>
+                                            </th>
+                                            <th>
+                                                <p>18,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>73,18</p>
+                                            </th>
+                                            <th>
+                                                <p>57,45</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,83</p>
+                                            </th>
+                                            <th>
+                                                <p>14,51</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>87,58</p>
+                                            </th>
+                                            <th>
+                                                <p>68,75</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,99</p>
+                                            </th>
+                                            <th>
+                                                <p>14,45</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>11,00</p>
+                                            </th>
+                                            <th>
+                                                <p>33,00</p>
+                                            </th>
+                                            <th>
+                                                <p>105,40</p>
+                                            </th>
+                                            <th>
+                                                <p>82,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,98</p>
+                                            </th>
+                                            <th>
+                                                <p>11,88</p>
+                                            </th>
+                                        </tr>
+                                </table>
+                                <h3 class="margintop25">Propiedades para el diseño</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Designación Comercial (HxB mm DN)</p>
+                                            </th>
+                                            <th>
+                                                <p>Espesor Nominal (e mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Área diseño (A cm&sup2;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Esbeltez ala (b/t)</p>
+                                            </th>
+                                            <th>
+                                                <p>Esbeltez alma (h/t)</p>
+                                            </th>
+                                            <th>
+                                                <p>Propiedades Estáticas (I&times;=I&times; cm&sup4;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Serie Tubos Estructurales Estándar</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SL m&sup2;/m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SP m&sup2;/Ton)</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>60x60</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,02</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,23</p>
+                                            </th>
+                                            <th>
+                                                <p>57,97</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>70x70</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,92</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,27</p>
+                                            </th>
+                                            <th>
+                                                <p>57,72</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>90x90</p>
+                                            </th>
+                                            <th>
+                                                <p>2,50</p>
+                                            </th>
+                                            <th>
+                                                <p>7,50</p>
+                                            </th>
+                                            <th>
+                                                <p>8,54</p>
+                                            </th>
+                                            <th>
+                                                <p>6,70</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,35</p>
+                                            </th>
+                                            <th>
+                                                <p>51,81</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100</p>
+                                            </th>
+                                            <th>
+                                                <p>3,00</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>11,33</p>
+                                            </th>
+                                            <th>
+                                                <p>8,89</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,38</p>
+                                            </th>
+                                            <th>
+                                                <p>43,26</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100*</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,32</p>
+                                            </th>
+                                            <th>
+                                                <p>16,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,37</p>
+                                            </th>
+                                            <th>
+                                                <p>22,05</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>110x110</p>
+                                            </th>
+                                            <th>
+                                                <p>3,40</p>
+                                            </th>
+                                            <th>
+                                                <p>10,20</p>
+                                            </th>
+                                            <th>
+                                                <p>14,10</p>
+                                            </th>
+                                            <th>
+                                                <p>11,07</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,42</p>
+                                            </th>
+                                            <th>
+                                                <p>38,17</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>12,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,01</p>
+                                            </th>
+                                            <th>
+                                                <p>14,14</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,46</p>
+                                            </th>
+                                            <th>
+                                                <p>32,49</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,20</p>
+                                            </th>
+                                            <th>
+                                                <p>21,60</p>
+                                            </th>
+                                            <th>
+                                                <p>30,71</p>
+                                            </th>
+                                            <th>
+                                                <p>24,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,44</p>
+                                            </th>
+                                            <th>
+                                                <p>18,37</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135</p>
+                                            </th>
+                                            <th>
+                                                <p>4,30</p>
+                                            </th>
+                                            <th>
+                                                <p>12,90</p>
+                                            </th>
+                                            <th>
+                                                <p>21,85</p>
+                                            </th>
+                                            <th>
+                                                <p>17,15</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,52</p>
+                                            </th>
+                                            <th>
+                                                <p>30,20</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135*</p>
+                                            </th>
+                                            <th>
+                                                <p>8,00</p>
+                                            </th>
+                                            <th>
+                                                <p>24,00</p>
+                                            </th>
+                                            <th>
+                                                <p>38,44</p>
+                                            </th>
+                                            <th>
+                                                <p>30,18</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,53</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155*</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>175x175*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>65,30</p>
+                                            </th>
+                                            <th>
+                                                <p>51,26</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,65</p>
+                                            </th>
+                                            <th>
+                                                <p>12,60</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>5,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,50</p>
+                                            </th>
+                                            <th>
+                                                <p>41,75</p>
+                                            </th>
+                                            <th>
+                                                <p>32,77</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,77</p>
+                                            </th>
+                                            <th>
+                                                <p>23,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>52,36</p>
+                                            </th>
+                                            <th>
+                                                <p>41,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,76</p>
+                                            </th>
+                                            <th>
+                                                <p>18,59</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>75,80</p>
+                                            </th>
+                                            <th>
+                                                <p>59,51</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,75</p>
+                                            </th>
+                                            <th>
+                                                <p>12,54</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>57,96</p>
+                                            </th>
+                                            <th>
+                                                <p>45,40</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,84</p>
+                                            </th>
+                                            <th>
+                                                <p>18,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>73,18</p>
+                                            </th>
+                                            <th>
+                                                <p>57,45</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,83</p>
+                                            </th>
+                                            <th>
+                                                <p>14,51</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>87,58</p>
+                                            </th>
+                                            <th>
+                                                <p>68,75</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,99</p>
+                                            </th>
+                                            <th>
+                                                <p>14,45</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>11,00</p>
+                                            </th>
+                                            <th>
+                                                <p>33,00</p>
+                                            </th>
+                                            <th>
+                                                <p>105,40</p>
+                                            </th>
+                                            <th>
+                                                <p>82,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,98</p>
+                                            </th>
+                                            <th>
+                                                <p>11,88</p>
+                                            </th>
+                                        </tr>
+                                </table>
+                            </div>
+                        </div>-->
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-rectangulares.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Tubos Estructurales Rectangulares</a></span>
+                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#rectangulares"><i class="large material-icons scrollspy" id="rectangulares">&#xE913;</i></a>-->
+                        </div>
+                        <!--<div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Dimensiones Nominales (pesos y medidas)</h3>
+                                <img src=<?php //echo get_bloginfo('template_directory');?>/img/prod-rectangular.svg width="150px" height="150px" class="responsive-img">
+                                <table class="responsive-table striped table-catalogo">
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Designación Comercial (HxB DN)</p>
+                                            </th>
+                                            <th>
+                                                <p>Espesor Nominal (e mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Radio Externo (R mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Sección Nominal (A cm&sup2;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Sección Nominal (P Kg/m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Serie Tubos Estructurales Conduven ECO</p>
+                                            </th>
+                                            <th>
+                                                <p>Serie Tubos Estructurales Estándar</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SL m&sup2;/m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SP m&sup2;/Ton)</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>60x60</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,02</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,23</p>
+                                            </th>
+                                            <th>
+                                                <p>57,97</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>70x70</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,92</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,27</p>
+                                            </th>
+                                            <th>
+                                                <p>57,72</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>90x90</p>
+                                            </th>
+                                            <th>
+                                                <p>2,50</p>
+                                            </th>
+                                            <th>
+                                                <p>7,50</p>
+                                            </th>
+                                            <th>
+                                                <p>8,54</p>
+                                            </th>
+                                            <th>
+                                                <p>6,70</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,35</p>
+                                            </th>
+                                            <th>
+                                                <p>51,81</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100</p>
+                                            </th>
+                                            <th>
+                                                <p>3,00</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>11,33</p>
+                                            </th>
+                                            <th>
+                                                <p>8,89</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,38</p>
+                                            </th>
+                                            <th>
+                                                <p>43,26</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100*</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,32</p>
+                                            </th>
+                                            <th>
+                                                <p>16,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,37</p>
+                                            </th>
+                                            <th>
+                                                <p>22,05</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>110x110</p>
+                                            </th>
+                                            <th>
+                                                <p>3,40</p>
+                                            </th>
+                                            <th>
+                                                <p>10,20</p>
+                                            </th>
+                                            <th>
+                                                <p>14,10</p>
+                                            </th>
+                                            <th>
+                                                <p>11,07</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,42</p>
+                                            </th>
+                                            <th>
+                                                <p>38,17</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>12,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,01</p>
+                                            </th>
+                                            <th>
+                                                <p>14,14</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,46</p>
+                                            </th>
+                                            <th>
+                                                <p>32,49</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,20</p>
+                                            </th>
+                                            <th>
+                                                <p>21,60</p>
+                                            </th>
+                                            <th>
+                                                <p>30,71</p>
+                                            </th>
+                                            <th>
+                                                <p>24,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,44</p>
+                                            </th>
+                                            <th>
+                                                <p>18,37</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135</p>
+                                            </th>
+                                            <th>
+                                                <p>4,30</p>
+                                            </th>
+                                            <th>
+                                                <p>12,90</p>
+                                            </th>
+                                            <th>
+                                                <p>21,85</p>
+                                            </th>
+                                            <th>
+                                                <p>17,15</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,52</p>
+                                            </th>
+                                            <th>
+                                                <p>30,20</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135*</p>
+                                            </th>
+                                            <th>
+                                                <p>8,00</p>
+                                            </th>
+                                            <th>
+                                                <p>24,00</p>
+                                            </th>
+                                            <th>
+                                                <p>38,44</p>
+                                            </th>
+                                            <th>
+                                                <p>30,18</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,53</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155*</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>175x175*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>65,30</p>
+                                            </th>
+                                            <th>
+                                                <p>51,26</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,65</p>
+                                            </th>
+                                            <th>
+                                                <p>12,60</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>5,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,50</p>
+                                            </th>
+                                            <th>
+                                                <p>41,75</p>
+                                            </th>
+                                            <th>
+                                                <p>32,77</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,77</p>
+                                            </th>
+                                            <th>
+                                                <p>23,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>52,36</p>
+                                            </th>
+                                            <th>
+                                                <p>41,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,76</p>
+                                            </th>
+                                            <th>
+                                                <p>18,59</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>75,80</p>
+                                            </th>
+                                            <th>
+                                                <p>59,51</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,75</p>
+                                            </th>
+                                            <th>
+                                                <p>12,54</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>57,96</p>
+                                            </th>
+                                            <th>
+                                                <p>45,40</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,84</p>
+                                            </th>
+                                            <th>
+                                                <p>18,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>73,18</p>
+                                            </th>
+                                            <th>
+                                                <p>57,45</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,83</p>
+                                            </th>
+                                            <th>
+                                                <p>14,51</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>87,58</p>
+                                            </th>
+                                            <th>
+                                                <p>68,75</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,99</p>
+                                            </th>
+                                            <th>
+                                                <p>14,45</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>11,00</p>
+                                            </th>
+                                            <th>
+                                                <p>33,00</p>
+                                            </th>
+                                            <th>
+                                                <p>105,40</p>
+                                            </th>
+                                            <th>
+                                                <p>82,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,98</p>
+                                            </th>
+                                            <th>
+                                                <p>11,88</p>
+                                            </th>
+                                        </tr>
+                                </table>
+                                <h3 class="margintop25">Propiedades para el diseño</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Designación Comercial (HxB mm DN)</p>
+                                            </th>
+                                            <th>
+                                                <p>Espesor Nominal (e mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Área diseño (A cm&sup2;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Esbeltez ala (b/t)</p>
+                                            </th>
+                                            <th>
+                                                <p>Esbeltez alma (h/t)</p>
+                                            </th>
+                                            <th>
+                                                <p>Propiedades Estáticas (I&times;=I&times; cm&sup4;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Serie Tubos Estructurales Estándar</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SL m&sup2;/m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Superficie Exterior (SP m&sup2;/Ton)</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>60x60</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,02</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,23</p>
+                                            </th>
+                                            <th>
+                                                <p>57,97</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>70x70</p>
+                                            </th>
+                                            <th>
+                                                <p>2,25</p>
+                                            </th>
+                                            <th>
+                                                <p>6,75</p>
+                                            </th>
+                                            <th>
+                                                <p>5,92</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,27</p>
+                                            </th>
+                                            <th>
+                                                <p>57,72</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>90x90</p>
+                                            </th>
+                                            <th>
+                                                <p>2,50</p>
+                                            </th>
+                                            <th>
+                                                <p>7,50</p>
+                                            </th>
+                                            <th>
+                                                <p>8,54</p>
+                                            </th>
+                                            <th>
+                                                <p>6,70</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,35</p>
+                                            </th>
+                                            <th>
+                                                <p>51,81</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100</p>
+                                            </th>
+                                            <th>
+                                                <p>3,00</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>11,33</p>
+                                            </th>
+                                            <th>
+                                                <p>8,89</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,38</p>
+                                            </th>
+                                            <th>
+                                                <p>43,26</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>100x100*</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,32</p>
+                                            </th>
+                                            <th>
+                                                <p>16,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,37</p>
+                                            </th>
+                                            <th>
+                                                <p>22,05</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>110x110</p>
+                                            </th>
+                                            <th>
+                                                <p>3,40</p>
+                                            </th>
+                                            <th>
+                                                <p>10,20</p>
+                                            </th>
+                                            <th>
+                                                <p>14,10</p>
+                                            </th>
+                                            <th>
+                                                <p>11,07</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,42</p>
+                                            </th>
+                                            <th>
+                                                <p>38,17</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>12,00</p>
+                                            </th>
+                                            <th>
+                                                <p>18,01</p>
+                                            </th>
+                                            <th>
+                                                <p>14,14</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,46</p>
+                                            </th>
+                                            <th>
+                                                <p>32,49</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>120x120*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,20</p>
+                                            </th>
+                                            <th>
+                                                <p>21,60</p>
+                                            </th>
+                                            <th>
+                                                <p>30,71</p>
+                                            </th>
+                                            <th>
+                                                <p>24,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,44</p>
+                                            </th>
+                                            <th>
+                                                <p>18,37</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135</p>
+                                            </th>
+                                            <th>
+                                                <p>4,30</p>
+                                            </th>
+                                            <th>
+                                                <p>12,90</p>
+                                            </th>
+                                            <th>
+                                                <p>21,85</p>
+                                            </th>
+                                            <th>
+                                                <p>17,15</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,52</p>
+                                            </th>
+                                            <th>
+                                                <p>30,20</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>135x135*</p>
+                                            </th>
+                                            <th>
+                                                <p>8,00</p>
+                                            </th>
+                                            <th>
+                                                <p>24,00</p>
+                                            </th>
+                                            <th>
+                                                <p>38,44</p>
+                                            </th>
+                                            <th>
+                                                <p>30,18</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,53</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>155x155*</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>13,50</p>
+                                            </th>
+                                            <th>
+                                                <p>26,39</p>
+                                            </th>
+                                            <th>
+                                                <p>20,72</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,60</p>
+                                            </th>
+                                            <th>
+                                                <p>28,80</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>175x175*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>65,30</p>
+                                            </th>
+                                            <th>
+                                                <p>51,26</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,65</p>
+                                            </th>
+                                            <th>
+                                                <p>12,60</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>5,50</p>
+                                            </th>
+                                            <th>
+                                                <p>16,50</p>
+                                            </th>
+                                            <th>
+                                                <p>41,75</p>
+                                            </th>
+                                            <th>
+                                                <p>32,77</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,77</p>
+                                            </th>
+                                            <th>
+                                                <p>23,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>52,36</p>
+                                            </th>
+                                            <th>
+                                                <p>41,10</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,76</p>
+                                            </th>
+                                            <th>
+                                                <p>18,59</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200x200*</p>
+                                            </th>
+                                            <th>
+                                                <p>10,50</p>
+                                            </th>
+                                            <th>
+                                                <p>31,50</p>
+                                            </th>
+                                            <th>
+                                                <p>75,80</p>
+                                            </th>
+                                            <th>
+                                                <p>59,51</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,75</p>
+                                            </th>
+                                            <th>
+                                                <p>12,54</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>21,00</p>
+                                            </th>
+                                            <th>
+                                                <p>57,96</p>
+                                            </th>
+                                            <th>
+                                                <p>45,40</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,84</p>
+                                            </th>
+                                            <th>
+                                                <p>18,55</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>220x220*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>73,18</p>
+                                            </th>
+                                            <th>
+                                                <p>57,45</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,83</p>
+                                            </th>
+                                            <th>
+                                                <p>14,51</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>9,00</p>
+                                            </th>
+                                            <th>
+                                                <p>27,00</p>
+                                            </th>
+                                            <th>
+                                                <p>87,58</p>
+                                            </th>
+                                            <th>
+                                                <p>68,75</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,99</p>
+                                            </th>
+                                            <th>
+                                                <p>14,45</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>260x260*</p>
+                                            </th>
+                                            <th>
+                                                <p>11,00</p>
+                                            </th>
+                                            <th>
+                                                <p>33,00</p>
+                                            </th>
+                                            <th>
+                                                <p>105,40</p>
+                                            </th>
+                                            <th>
+                                                <p>82,74</p>
+                                            </th>
+                                            <th>
+                                                <p>C</p>
+                                            </th>
+                                            <th>
+                                                <p>A y B</p>
+                                            </th>
+                                            <th>
+                                                <p>0,98</p>
+                                            </th>
+                                            <th>
+                                                <p>11,88</p>
+                                            </th>
+                                        </tr>
+                                </table>
+                            </div>
+                        </div>-->
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-tubos.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Tubos para ventilación</a></span>
+                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#tubos"><i class="large material-icons scrollspy" id="tubos">&#xE913;</i></a>-->
+                        </div>
+                        <!--<div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Especificaciones</h3>
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-circular.svg width="150px" height="150px" class="responsive-img">
+                                <table class="responsive-table striped table-catalogo">
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Designación Comercial (NPS (&sup1;))</p>
+                                            </th>
+                                            <th>
+                                                <p>Diámetro Externo (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Espesor Nominal (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Longitud (m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Peso (Kgf/m)</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1/2</p>
+                                            </th>
+                                            <th>
+                                                <p>20,8</p>
+                                            </th>
+                                            <th>
+                                                <p>2,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>0,93</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>3/4</p>
+                                            </th>
+                                            <th>
+                                                <p>26,4</p>
+                                            </th>
+                                            <th>
+                                                <p>2,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,20</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1*</p>
+                                            </th>
+                                            <th>
+                                                <p>33,2</p>
+                                            </th>
+                                            <th>
+                                                <p>2,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,54</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1</p>
+                                            </th>
+                                            <th>
+                                                <p>33,2</p>
+                                            </th>
+                                            <th>
+                                                <p>2,30</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,75</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1 1/4*</p>
+                                            </th>
+                                            <th>
+                                                <p>41,7</p>
+                                            </th>
+                                            <th>
+                                                <p>2,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,96</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1 1/4</p>
+                                            </th>
+                                            <th>
+                                                <p>41,7</p>
+                                            </th>
+                                            <th>
+                                                <p>2,30</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,23</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1 1/2*</p>
+                                            </th>
+                                            <th>
+                                                <p>47,8</p>
+                                            </th>
+                                            <th>
+                                                <p>2,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,26</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1 1/2</p>
+                                            </th>
+                                            <th>
+                                                <p>47,8</p>
+                                            </th>
+                                            <th>
+                                                <p>2,30</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,58</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>1 1/2</p>
+                                            </th>
+                                            <th>
+                                                <p>47,8</p>
+                                            </th>
+                                            <th>
+                                                <p>2,60</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,90</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>2*</p>
+                                            </th>
+                                            <th>
+                                                <p>59,6</p>
+                                            </th>
+                                            <th>
+                                                <p>2,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,84</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>2</p>
+                                            </th>
+                                            <th>
+                                                <p>59,6</p>
+                                            </th>
+                                            <th>
+                                                <p>2,30</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>3,25</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>2</p>
+                                            </th>
+                                            <th>
+                                                <p>59,6</p>
+                                            </th>
+                                            <th>
+                                                <p>2,60</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>3,65</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>2</p>
+                                            </th>
+                                            <th>
+                                                <p>59,6</p>
+                                            </th>
+                                            <th>
+                                                <p>2,90</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,05</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>2 1/2*</p>
+                                            </th>
+                                            <th>
+                                                <p>71,8</p>
+                                            </th>
+                                            <th>
+                                                <p>2,30</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>3,94</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>2 1/2</p>
+                                            </th>
+                                            <th>
+                                                <p>71,8</p>
+                                            </th>
+                                            <th>
+                                                <p>2,60</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,44</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>2 1/2</p>
+                                            </th>
+                                            <th>
+                                                <p>71,8</p>
+                                            </th>
+                                            <th>
+                                                <p>2,90</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,93</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>3*</p>
+                                            </th>
+                                            <th>
+                                                <p>88,1</p>
+                                            </th>
+                                            <th>
+                                                <p>2,30</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,87</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>3</p>
+                                            </th>
+                                            <th>
+                                                <p>88,1</p>
+                                            </th>
+                                            <th>
+                                                <p>2,90</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,09</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>3*</p>
+                                            </th>
+                                            <th>
+                                                <p>88,1</p>
+                                            </th>
+                                            <th>
+                                                <p>3,40</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>7,10</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>3*</p>
+                                            </th>
+                                            <th>
+                                                <p>88,1</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>8,30</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>4*</p>
+                                            </th>
+                                            <th>
+                                                <p>113,0</p>
+                                            </th>
+                                            <th>
+                                                <p>2,30</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,28</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>4</p>
+                                            </th>
+                                            <th>
+                                                <p>113,0</p>
+                                            </th>
+                                            <th>
+                                                <p>2,90</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>7,87</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>4*</p>
+                                            </th>
+                                            <th>
+                                                <p>113,0</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>6,00</p>
+                                            </th>
+                                            <th>
+                                                <p>10,75</p>
+                                            </th>
+                                        </tr>
+                                </table>
+                            </div>
+                        </div>-->
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod3.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Láminas</a></span>
+                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#laminas"><i class="large material-icons scrollspy" id="laminas">&#xE913;</i></a>-->
+                        </div>
+                        <!--<div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Tabla de Productos</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                    <thead>
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Producto</p>
+                                            </th>
+                                            <th>
+                                                <p>Largo (m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Ancho (m)</p>
+                                            </th>
+                                            <th>
+                                                <p>Espesor (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Peso (kg/m&sup2;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Norma (pulg)</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="laminas">
+                                        <tr>
+                                            <th>
+                                                <p>Lámina Hierro Negro</p>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,40</p></li>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,40</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,20</p></li>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,20</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,50</p></li>
+                                                    <li><p>3,00</p></li>
+                                                    <li><p>3,00</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>15,70</p></li>
+                                                    <li><p>23,55</p></li>
+                                                    <li><p>23,55</p></li>
+                                                    <li><p>28,26</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <p>ASTM A 568</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>Lámina Pulida</p>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,40</p></li>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,40</p></li>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,40</p></li>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,40</p></li>
+                                                    <li><p>2,00</p></li>
+                                                    <li><p>2,40</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,20</p></li>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,20</p></li>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,20</p></li>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,20</p></li>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,20</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>0,60</p></li>
+                                                    <li><p>0,60</p></li>
+                                                    <li><p>0,70</p></li>
+                                                    <li><p>0,70</p></li>
+                                                    <li><p>0,90</p></li>
+                                                    <li><p>0,90</p></li>
+                                                    <li><p>1,10</p></li>
+                                                    <li><p>1,10</p></li>
+                                                    <li><p>1,40</p></li>
+                                                    <li><p>1,40</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>4,71</p></li>
+                                                    <li><p>5,65</p></li>
+                                                    <li><p>5,50</p></li>
+                                                    <li><p>6,59</p></li>
+                                                    <li><p>7,07</p></li>
+                                                    <li><p>8,48</p></li>
+                                                    <li><p>8,64</p></li>
+                                                    <li><p>10,36</p></li>
+                                                    <li><p>10,99</p></li>
+                                                    <li><p>13,19</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <p>ASTM A 568</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>Lámina Estriada</p>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>2,40</p></li>
+                                                    <li><p>2,40</p></li>
+                                                    <li><p>2,40</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,00</p></li>
+                                                    <li><p>1,00</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>2,80</p></li>
+                                                    <li><p>3,00</p></li>
+                                                    <li><p>6,70</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <ul>
+                                                    <li><p>23,60</p></li>
+                                                    <li><p>25,00</p></li>
+                                                    <li><p>50,59</p></li>
+                                                </ul>
+                                            </th>
+                                            <th>
+                                                <p>ASTM A786 / COVENIN 1693</p>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>-->
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-mallas.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Malla en Rollo</a></span>
+                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#mallas"><i class="large material-icons scrollspy" id="mallas">&#xE913;</i></a>-->
+                        </div>
+                        <!--<div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Datos de las Mallas</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                    <thead>
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Separación Alambres (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Diám. Alambre (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Área (m&sup2;)</p>
+                                            </th>
+                                            <th>
+                                                <p>Peso (kg)</p>
+                                            </th>
+                                            <th>
+                                                <p>Long (mts)</p>
+                                            </th>
+                                            <th>
+                                                <p>Transv (mts)</p>
+                                            </th>
+                                            <th>
+                                                <p>No. Alambres Long.</p>
+                                            </th>
+                                            <th>
+                                                <p>No. Alambres Transv.</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="laminas">
+                                        <tr>
+                                            <th>
+                                                <p>100x100</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>120,00</p>
+                                            </th>
+                                            <th>
+                                                <p>238,50</p>
+                                            </th>
+                                            <th>
+                                                <p>45,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,65</p>
+                                            </th>
+                                            <th>
+                                                <p>27</p>
+                                            </th>
+                                            <th>
+                                                <p>450</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>150x150</p>
+                                            </th>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>120,00</p>
+                                            </th>
+                                            <th>
+                                                <p>160,00</p>
+                                            </th>
+                                            <th>
+                                                <p>45,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,65</p>
+                                            </th>
+                                            <th>
+                                                <p>18</p>
+                                            </th>
+                                            <th>
+                                                <p>300</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>150x150</p>
+                                            </th>
+                                            <th>
+                                                <p>3,43</p>
+                                            </th>
+                                            <th>
+                                                <p>100,00</p>
+                                            </th>
+                                            <th>
+                                                <p>98,00</p>
+                                            </th>
+                                            <th>
+                                                <p>40,85</p>
+                                            </th>
+                                            <th>
+                                                <p>2,45</p>
+                                            </th>
+                                            <th>
+                                                <p>17</p>
+                                            </th>
+                                            <th>
+                                                <p>272</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>150x150</p>
+                                            </th>
+                                            <th>
+                                                <p>3,43</p>
+                                            </th>
+                                            <th>
+                                                <p>50,00</p>
+                                            </th>
+                                            <th>
+                                                <p>49,00</p>
+                                            </th>
+                                            <th>
+                                                <p>20,40</p>
+                                            </th>
+                                            <th>
+                                                <p>2,65</p>
+                                            </th>
+                                            <th>
+                                                <p>17</p>
+                                            </th>
+                                            <th>
+                                                <p>136</p>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>-->
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-cabillas.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Varillas</a></span>
+                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#varillas"><i class="large material-icons scrollspy" id="varillas">&#xE913;</i></a>-->
+                        </div>
+                        <!--<div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Tabla de Productos</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                    <thead>
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Diámetro (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Peso (kg)</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="laminas">
+                                        <tr>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>0,592</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>0,749</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>0,925</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,332</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,813</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>8,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,368</p>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>-->
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-cerchas.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Cerchas</a></span>
+                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#cerchas"><i class="large material-icons scrollspy" id="cerchas">&#xE913;</i></a>-->
+                        </div>
+                        <!--<div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Tabla de Productos</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                    <thead>
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                            </th>
+                                            <th>
+                                                <p>Diám. Alambre Sup. (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Diám. Alambre Inf. (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Diám. Alambre Transv. (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Peso (Kg)</p>
+                                            </th>
+                                            <th>
+                                                <p>Altura (mm)</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="laminas">
+                                        <tr>
+                                            <th>
+                                                <p>70</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>5,50</p>
+                                            </th>
+                                            <th>
+                                                <p>70,00</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>90</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>5,73</p>
+                                            </th>
+                                            <th>
+                                                <p>90,00</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>150</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>6,53</p>
+                                            </th>
+                                            <th>
+                                                <p>150,00</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>7,24</p>
+                                            </th>
+                                            <th>
+                                                <p>200,00</p>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>-->
+                    </li>
+                  </ul>
+            </div>
         </div>
     </div>
-        <ul class="nav nav-tabs" id="productosnav" hidden="hidden">
-            <li class="active"><a href="#tuboscuadrados" data-toggle="tab">Tubos Cuadrados</a></li>
-            <li><a href="#tubosrectangulares" data-toggle="tab">Tubos Rectangulares</a></li>
-            <li><a href="#tubosfriocaliente" data-toggle="tab">Tubos de Láminas en Frío/Caliente</a></li>
-            <li><a href="#laminasfriocaliente" data-toggle="tab">Láminas de acero en Frío/Caliente</a></li>
-        </ul>
-        <div class="container">
-			<div class="col-md-12">
-		        <div class="tab-content">
-		            <div class="tab-pane fade in active" id="tuboscuadrados">
-				        <?php $args=array('post_status' => 'publish', 'order' => 'ASC', 'category_name'=>'productos', 'tax_query' => array( array(  'taxonomy' => 'post_tag', 'field' => 'slug', 'terms' => 'tubos-cuadrados' ) )); $my_query = new WP_Query($args);
-			            if( $my_query->have_posts() ) {
-			              while ($my_query->have_posts()) : $my_query->the_post();
-			                $categories = get_the_category(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-			                $id = get_the_ID();
-			                global $dynamic_featured_image;
-			   				$nth_image = $dynamic_featured_image -> get_all_featured_images( $id );?>
-			       					<div class="row wow fadeIn" data-wow-delay="0.2s">
-											<div class="col-md-12">
-												<h3 class="letranaranja  hvr-underline-from-center"><?php echo get_the_title(); ?></h3>
-												<img src="<?php echo $nth_image[0]['full'];?>" class="img-responsive hvr-glow">
-											</div>
-					                      	<div class="col-md-12">
-												<?php the_content(); ?>
-											</div>
-									</div>
-						<div class="clearfix paddingbot50"></div>
-			              <?php endwhile; }  wp_reset_query(); ?>
-		            </div>
-		            <div class="tab-pane fade" id="tubosrectangulares">
-				        <?php $args=array('post_status' => 'publish', 'order' => 'ASC', 'category_name'=>'productos', 'tax_query' => array( array(  'taxonomy' => 'post_tag', 'field' => 'slug', 'terms' => 'tubos-rectangulares' ) )); $my_query = new WP_Query($args);
-			            if( $my_query->have_posts() ) {
-			              while ($my_query->have_posts()) : $my_query->the_post();
-			                $categories = get_the_category(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-			                $id = get_the_ID();
-			                global $dynamic_featured_image;
-			   				$nth_image = $dynamic_featured_image -> get_all_featured_images( $id ); ?>
-			       					<div class="row wow fadeIn" data-wow-delay="0.2s">
-											<div class="col-md-12">
-												<h3 class="letranaranja  hvr-underline-from-center"><?php echo get_the_title(); ?></h3>
-												<img src="<?php echo $nth_image[0]['full'];?>" class="img-responsive hvr-glow">
-											</div>
-					                      	<div class="col-md-12">
-												<?php the_content(); ?>
-											</div>
-									</div>
-						<div class="clearfix paddingbot50"></div>
-			              <?php endwhile; }  wp_reset_query(); ?>
-		            </div>
-		            <div class="tab-pane fade" id="tubosfriocaliente">
-				        <?php $args=array('post_status' => 'publish', 'order' => 'ASC', 'category_name'=>'productos', 'tax_query' => array( array(  'taxonomy' => 'post_tag', 'field' => 'slug', 'terms' => 'tubos-de-lamina-en-friocaliente' ) )); $my_query = new WP_Query($args);
-			            if( $my_query->have_posts() ) {
-			              while ($my_query->have_posts()) : $my_query->the_post();
-			                $categories = get_the_category(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-			                $id = get_the_ID();
-			                global $dynamic_featured_image;
-			   				$nth_image = $dynamic_featured_image -> get_all_featured_images( $id ); ?>
-			       					<div class="row wow fadeIn" data-wow-delay="0.2s">
-											<div class="col-md-12">
-												<h3 class="letranaranja  hvr-underline-from-center"><?php echo get_the_title(); ?></h3>
-												<img src="<?php echo $nth_image[0]['full'];?>" class="img-responsive hvr-glow">
-											</div>
-					                      	<div class="col-md-12">
-												<?php the_content(); ?>
-											</div>
-									</div>
-						<div class="clearfix paddingbot50"></div>
-			              <?php endwhile; }  wp_reset_query(); ?>
-		            </div>
-		            <div class="tab-pane fade" id="laminasfriocaliente">
-				        <?php $args=array('post_status' => 'publish', 'order' => 'ASC', 'category_name'=>'productos', 'tax_query' => array( array(  'taxonomy' => 'post_tag', 'field' => 'slug', 'terms' => 'laminas-de-acero-en-friocaliente' ) )); $my_query = new WP_Query($args);
-			            if( $my_query->have_posts() ) {
-			              while ($my_query->have_posts()) : $my_query->the_post();
-			                $categories = get_the_category(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-			                $id = get_the_ID();
-			                global $dynamic_featured_image;
-			   				$nth_image = $dynamic_featured_image -> get_all_featured_images( $id ); ?>
-			       					<div class="row wow fadeIn" data-wow-delay="0.2s">
-											<div class="col-md-12">
-												<h3 class="letranaranja  hvr-underline-from-center"><?php echo get_the_title(); ?></h3>
-												<img src="<?php echo $nth_image[0]['full'];?>" class="img-responsive hvr-glow">
-											</div>
-					                      	<div class="col-md-12">
-												<?php the_content(); ?>
-											</div>
-									</div>
-						<div class="clearfix paddingbot50"></div>
-			              <?php endwhile; }  wp_reset_query(); ?>
-		            </div>
-				</div>
-		    </div>
-        </div>
-</section>
+
 <?php get_footer(); ?>
+<script>
+      jQuery(document).ready(function(){
+        jQuery('.collapsible').collapsible();
+          jQuery('.scrollspy').scrollSpy();
+      });
+</script>
