@@ -112,7 +112,7 @@
                         ?>
                             <div class="grid-item margintop25 ini-noticias wow fadeIn">
 
-                                <h5><a href="<?php the_permalink(); ?>"><?php echo $noticia; ?></a></h5>
+                                <h5><a href="<?php the_permalink(); ?>">LABOR SOCIAL</a></h5>
                                 <div class="p100x300 hoverable z-depth-1">
                                     <a href="<?php the_permalink(); ?>" class="ini-noticias-a" id="<?php echo $x; ?>">
                                         <div class="picture-gradient"></div>
@@ -140,7 +140,7 @@
                         ?>
                             <div class="grid-item margintop25 ini-noticias wow fadeIn">
 
-                                <h5><a href="<?php the_permalink(); ?>"><?php echo $noticia; ?></a></h5>
+                                <h5><a href="<?php the_permalink(); ?>">DEPORTE</a></h5>
                                 <div class="p100x300 hoverable z-depth-1">
                                     <a href="<?php the_permalink(); ?>" class="ini-noticias-a" id="<?php echo $x; ?>">
                                         <div class="picture-gradient"></div>
@@ -169,7 +169,7 @@
                         ?>
                             <div class="grid-item margintop25 ini-noticias wow fadeIn">
 
-                                <h5><a href="<?php the_permalink(); ?>"><?php echo $noticia; ?></a></h5>
+                                <h5><a href="<?php the_permalink(); ?>">EVENTOS</a></h5>
                                 <div class="p100x300 hoverable z-depth-1">
                                     <a href="<?php the_permalink(); ?>" class="ini-noticias-a" id="<?php echo $x; ?>">
                                         <div class="picture-gradient"></div>
@@ -198,7 +198,7 @@
                         ?>
                             <div class="grid-item margintop25 ini-noticias wow fadeIn">
 
-                                <h5><a href="<?php the_permalink(); ?>"><?php echo $noticia; ?></a></h5>
+                                <h5><a href="<?php the_permalink(); ?>">METROACERO</a></h5>
                                 <div class="p100x300 hoverable z-depth-1">
                                     <a href="<?php the_permalink(); ?>" class="ini-noticias-a" id="<?php echo $x; ?>">
                                         <div class="picture-gradient"></div>
