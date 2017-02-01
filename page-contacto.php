@@ -201,7 +201,7 @@
             navigationControl: false,
             mapTypeControl: false,
             scaleControl: false,
-            draggable: false,
+            draggable: true,
           };
 
           var map = new google.maps.Map(document.getElementById('map'),
