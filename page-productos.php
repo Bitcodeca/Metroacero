@@ -2452,6 +2452,204 @@
                         <div class="collapsible-header">
                             <div class="picture-gradient"></div>
                             <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-cerchas.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Cerchas</a></span>
+                            <a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#cerchas"><i class="large material-icons scrollspy" id="cerchas">&#xE913;</i></a>
+                        </div>
+                        <div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Datos de Productos</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                    <thead>
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>-</p>
+                                            </th>
+                                            <th>
+                                                <p>Diám. Alambre Sup. (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Diám. Alambre Inf. (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Diám. Alambre Transv. (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Peso (Kg)</p>
+                                            </th>
+                                            <th>
+                                                <p>Altura (mm)</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="laminas">
+                                        <tr>
+                                            <th>
+                                                <p>70</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>5,50</p>
+                                            </th>
+                                            <th>
+                                                <p>70,00</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>90</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>5,73</p>
+                                            </th>
+                                            <th>
+                                                <p>90,00</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>150</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>6,53</p>
+                                            </th>
+                                            <th>
+                                                <p>150,00</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>200</p>
+                                            </th>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>7,24</p>
+                                            </th>
+                                            <th>
+                                                <p>200,00</p>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
+                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-cabillas.jpg class="responsive-img">
+                            </div>
+                            <span class="foto-rec prod"><a>Varillas</a></span>
+                            <a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#varillas"><i class="large material-icons scrollspy" id="varillas">&#xE913;</i></a>
+                        </div>
+                        <div class="collapsible-body collap-inner-padding">
+                            <div class="collap-inner">
+                                <h3>Tabla de Productos</h3>
+                                <table class="responsive-table striped table-catalogo">
+                                    <thead>
+                                        <tr class="collap-table-titulo">
+                                            <th>
+                                                <p>Diámetro (mm)</p>
+                                            </th>
+                                            <th>
+                                                <p>Peso (kg)</p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="laminas">
+                                        <tr>
+                                            <th>
+                                                <p>4,00</p>
+                                            </th>
+                                            <th>
+                                                <p>0,592</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>4,50</p>
+                                            </th>
+                                            <th>
+                                                <p>0,749</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>0,925</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>5,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,332</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>7,00</p>
+                                            </th>
+                                            <th>
+                                                <p>1,813</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p>8,00</p>
+                                            </th>
+                                            <th>
+                                                <p>2,368</p>
+                                            </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header">
+                            <div class="picture-gradient"></div>
+                            <div class="inner-collap">
                                 <img src=<?php echo get_bloginfo('template_directory');?>/img/prod3.jpg class="responsive-img">
                             </div>
                             <span class="foto-rec prod"><a>Láminas</a></span>
@@ -2462,26 +2660,6 @@
                                 <h3>Tabla de Productos</h3>
                             </div>
                         </div>-->
-                    </li>
-                    <li>
-                        <div class="collapsible-header">
-                            <div class="picture-gradient"></div>
-                            <div class="inner-collap">
-                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-cabillas.jpg class="responsive-img">
-                            </div>
-                            <span class="foto-rec prod"><a>Varillas</a></span>
-                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#varillas"><i class="large material-icons scrollspy" id="varillas">&#xE913;</i></a>-->
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header">
-                            <div class="picture-gradient"></div>
-                            <div class="inner-collap">
-                                <img src=<?php echo get_bloginfo('template_directory');?>/img/prod-cerchas.jpg class="responsive-img">
-                            </div>
-                            <span class="foto-rec prod"><a>Cerchas</a></span>
-                            <!--<a class="btn-floating btn-large waves-effect waves-light btn-productos" href="#cerchas"><i class="large material-icons scrollspy" id="cerchas">&#xE913;</i></a>-->
-                        </div>
                     </li>
                   </ul>
             </div>
