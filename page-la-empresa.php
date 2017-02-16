@@ -134,7 +134,12 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <img src=<?php echo get_bloginfo('template_directory');?>/img/ProcesoProductivo.jpg class="responsive-img  materialboxed">
+                    <img src=<?php echo get_bloginfo('template_directory');?>/img/ProcesoProductivo1.jpg class="responsive-img  materialboxed">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img src=<?php echo get_bloginfo('template_directory');?>/img/ProcesoProductivo.jpg class="responsive-img  materialboxed" style="width: 100%;">
                 </div>
             </div>
         </div>
